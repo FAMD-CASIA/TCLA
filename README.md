@@ -2,13 +2,13 @@
 
 Cross-Session Decoding of Neural Spiking Data via Task-Conditioned Latent Alignment 用到的代码
 
-exp中
+exp文件夹中：
 
 AE_model是source session训练的代码
 
 Stage2是target session的代码
 
-ldns文件夹中
+ldns文件夹中：
 
 data是数据处理方式
 
