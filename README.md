@@ -19,7 +19,7 @@ data['spike'] [number of trials, trial_length, number of  channels] 数据的spi
 
 data['behavior'] [number of trials, trial_length, number of  channels] 数据的行为信息(position)
 
-data['label'] [number of trials,] 数值是[0,1,2,...7]中的一个
+data['label'] [number of trials,] 行为标签，数值是[0,1,2,...7]中的一个
 
 TCLA文件夹中：
 
