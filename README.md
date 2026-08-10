@@ -1,19 +1,22 @@
 # TCLA
 
-Cross-Session Decoding of Neural Spiking Data via Task-Conditioned Latent Alignment 用到的代码
+examples/Chewie_CO_2016文件夹中：
 
-exp文件夹中：
+AE_model是Chewie_CO_2016数据集source session训练的代码
 
-AE_model是source session训练的代码
+Stage2_MMD是Chewie_CO_2016数据集target session的cross-session代码
 
-Stage2是target session的代码
+to_Mihili_CO_2014/Stage2_MMD是以Mihili_CO_2014数据集作为target session的cross-subject代码
 
-ldns文件夹中：
+
+data文件夹中：
+
+解压文件unzip_this_file.zip,其中包含Chewie_CO_2016和Chewie_CO_2016的两个数据集用到的示例数据
+
+TCLA文件夹中：
 
 data是数据处理方式
 
 network是用到的网络
 
-utils是一些其余的函数
-
-losses是一些损失函数
+losses是损失函数
