@@ -21,7 +21,7 @@ data['label'] [number of trials,] 行为标签，数值是[0,1,2,...7]中的一�
 
 # TCLA文件夹中：
 
-data是数据处理方式
+data是数据加载方式
 
 network是用到的网络
 
