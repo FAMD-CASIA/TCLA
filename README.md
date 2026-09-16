@@ -26,3 +26,6 @@ data是数据加载方式
 network是用到的网络
 
 losses是损失函数
+
+
+test
