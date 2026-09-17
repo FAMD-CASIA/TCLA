@@ -1,6 +1,4 @@
-# Generated from conda environment: ldns
 # Python: 3.9.21
-# Local conda build URLs from pip freeze were normalized to package==version pins.
 absl-py==2.2.2
 accelerate==1.1.1
 acres==0.5.0
