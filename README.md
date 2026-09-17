@@ -52,6 +52,8 @@ pip install -r requirements.txt
 
 ## Downloading Monkey Data
 
+`data/` stores example data for quick validation. The complete datasets used in the paper can be obtained from the following URLs:
+
 Chewie\_CO\_2016, Mihili\_CO\_2014, Jango\_ISO\_2015, and Spike\_ISO\_2012 are available from https://datadryad.org/dataset/doi:10.5061/dryad.cvdncjt7n. 
 
 L\_paralle\_CO and V\_paralle\_CO were are available from https://datadryad.org/dataset/doi:10.5061/dryad.jsxksn0qd. 
@@ -85,14 +87,12 @@ python examples/Chewie_CO_2016/AE_model/train.py
 Cross-session Stage2 target alignment, after Stage1 has produced the source checkpoint:
 
 ```bash
-TARGET_SESSION_ID=1 \
 python examples/Chewie_CO_2016/Stage2_MMD/with_align_all_labels.py
 ```
 
 Cross-subject Stage2 target alignment, after Stage1 has produced the source checkpoint:
 
 ```bash
-TARGET_SESSION_ID=0 \
 python examples/Chewie_CO_2016/to_Mihili_CO_2014/Stage2_MMD/with_align_all_labels.py
 ```
 
