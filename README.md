@@ -29,3 +29,62 @@ losses是损失函数
 
 
 test
+
+
+
+# Introduction
+
+This repository is a simplified, GitHub-ready version of the smooth latent
+alignment code. It keeps small Chewie and Mihili example datasets and the
+minimal model code needed to train a smooth source autoencoder and run
+conditional MMD target alignment.
+
+## Contents
+
+- `TCLA/`: core Python package.
+- `data/Chewie_CO_2016/`: two example sessions, `session_0.pickle` and
+  `session_1.pickle`.
+- `data/Mihili_CO_2014/`: one example target session, `session_0.pickle`.
+- `examples/Chewie_CO_2016/AE_model/train.py`: smooth Stage1 source-session
+  training with latent Gaussian smoothing, latent dynamics regularization, and
+  behavior curvature loss.
+- `examples/Chewie_CO_2016/Stage2_MMD/with_align_all_labels.py`: Stage2
+  conditional MMD alignment for `session_0 -> session_1`, reusing the smooth
+  Stage1 checkpoint.
+- `examples/Chewie_CO_2016/to_Mihili_CO_2014/Stage2_MMD/with_align_all_labels.py`:
+  cross-subject conditional MMD template for `Chewie_CO_2016/session_0` to
+  `Mihili_CO_2014/session_0`, reusing the same smooth Stage1 checkpoint.
+
+## Quick Check
+
+Run a lightweight import/data/model-forward check:
+
+```bash
+python smoke_test.py
+```
+
+## Example Training
+
+Stage1 source training:
+
+```bash
+NUM_EPOCHS=1 NUM_WARMUP_EPOCHS=0 NUM_WORKERS=0 \
+python examples/Chewie_CO_2016/AE_model/train.py
+```
+
+Stage2 target alignment, after Stage1 has produced the source checkpoint:
+
+```bash
+TARGET_SESSION_ID=1 ADAPT_NUM_EPOCHS=1 ADAPT_NUM_WARMUP_EPOCHS=0 NUM_WORKERS=0 \
+python examples/Chewie_CO_2016/Stage2_MMD/with_align_all_labels.py
+```
+
+Cross-subject Stage2 target alignment, after Stage1 has produced the source
+checkpoint:
+
+```bash
+TARGET_SESSION_ID=0 ADAPT_NUM_EPOCHS=1 ADAPT_NUM_WARMUP_EPOCHS=0 NUM_WORKERS=0 \
+python examples/Chewie_CO_2016/to_Mihili_CO_2014/Stage2_MMD/with_align_all_labels.py
+```
+
+Outputs are written under `outputs/`, which is ignored by git.
