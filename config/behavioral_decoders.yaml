@@ -1,0 +1,20 @@
+ridge:
+  model: sklearn.linear_model.Ridge
+  lag: 10
+  alpha_grid: np.logspace(-5, 5, 20)
+  alpha_min_exp: -5
+  alpha_max_exp: 5
+  num_alphas: 20
+  cv: 5
+  grid_jobs: -1
+
+lstm:
+  bins_before: 10
+  bins_after: 0
+  bins_current: 1
+  units: 64
+  dropout: 0.1
+  epochs: 25
+  learning_rate: 0.001
+  batch_size: 64
+  random_seed: 42

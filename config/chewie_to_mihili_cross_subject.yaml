@@ -1,0 +1,65 @@
+experiment:
+  name: chewie_to_mihili_cross_subject
+  task: cross_subject
+  method: TCLA
+  source_dataset: Chewie_CO_2016
+  target_dataset: Mihili_CO_2014
+  source_session: session_0
+  target_session: session_0
+
+stage1_source_ae:
+  model:
+    C_shared: 30
+    C: 256
+    C_latent: 16
+    num_blocks: 4
+    num_blocks_decoder: 0
+    num_lin_per_mlp: 2
+    bidirectional: false
+    latent_smooth_sigma_bins: 10
+    use_pnba_read_adapter: true
+    pnba_proj_channels: 32
+    pnba_pooled_neurons: 16
+  dataset:
+    signal_length: 210
+  training:
+    lr: 0.001
+    num_epochs: 400
+    num_warmup_epochs: 100
+    batch_size: 64
+    num_workers: 4
+    precision: "no"
+    grad_clip: 1.0
+    random_seed: 42
+    latent_l2_beta: 0.01
+    mask_prob: 0.5
+    lambda_behavior: 1.0
+    lambda_behavior_curv: 100000
+
+stage2_conditional_mmd:
+  model:
+    C_shared: 30
+    C: 256
+    C_latent: 16
+    num_blocks: 4
+    num_blocks_decoder: 0
+    num_lin_per_mlp: 2
+    bidirectional: false
+    use_pnba_read_adapter: true
+    pnba_proj_channels: 32
+    pnba_pooled_neurons: 16
+  dataset:
+    signal_length: 210
+  adapt:
+    lr: 0.001
+    num_epochs: 300
+    num_warmup_epochs: 100
+    batch_size: 16
+    num_workers: 4
+    grad_clip: 1.0
+    random_seed: 42
+    mask_prob: 0
+    eta_mmd: 10
+    kernel_mul: 2.0
+    kernel_num: 5
+    max_mmd_samples_per_condition: 4096
