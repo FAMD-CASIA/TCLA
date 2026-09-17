@@ -31,8 +31,7 @@ losses是损失函数
 test
 
 
-
-# Introduction
+# TCLA
 
 This repository is a simplified, GitHub-ready version of the smooth latent
 alignment code. It keeps small Chewie and Mihili example datasets and the
@@ -41,19 +40,68 @@ conditional MMD target alignment.
 
 ## Contents
 
-- `TCLA/`: core Python package.
-- `data/Chewie_CO_2016/`: two example sessions, `session_0.pickle` and
-  `session_1.pickle`.
-- `data/Mihili_CO_2014/`: one example target session, `session_0.pickle`.
-- `examples/Chewie_CO_2016/AE_model/train.py`: smooth Stage1 source-session
-  training with latent Gaussian smoothing, latent dynamics regularization, and
-  behavior curvature loss.
-- `examples/Chewie_CO_2016/Stage2_MMD/with_align_all_labels.py`: Stage2
-  conditional MMD alignment for `session_0 -> session_1`, reusing the smooth
-  Stage1 checkpoint.
-- `examples/Chewie_CO_2016/to_Mihili_CO_2014/Stage2_MMD/with_align_all_labels.py`:
-  cross-subject conditional MMD template for `Chewie_CO_2016/session_0` to
-  `Mihili_CO_2014/session_0`, reusing the same smooth Stage1 checkpoint.
+```text
+TCLA/
+├── README.md                                     
+├── requirements.txt                              # Python dependencies
+├── config/                                       # Example hyperparameter files
+│   ├── behavioral_decoders.yaml                  # Ridge and LSTM decoder hyperparameters
+│   ├── chewie_co_2016_cross_session.yaml         # Chewie session_0 -> session_1 experiment config
+│   └── chewie_to_mihili_cross_subject.yaml       # Chewie session_0 -> Mihili session_0 experiment config
+├── data/                                         # Small example datasets
+│   ├── Chewie_CO_2016/
+│   │   ├── session_0.pickle                      # Source session example
+│   │   ├── session_1.pickle                      # Target session example
+│   │   └── adan_channel_ids.json                 # ADAN channel mapping metadata
+│   └── Mihili_CO_2014/
+│       └── session_0.pickle                      # Cross-subject target session example
+├── TCLA/                                         
+│   ├── data/
+│   │   └── data_load.py                          # Session pickle loader
+│   ├── networks/
+│   │   ├── blocks.py                             # Modules
+│   │   ├── count_wrapper.py                      # AE output wrapper
+│   │   └── s4.py                                 # S4 sequence blocks
+│   └── losses.py                                 # Training losses
+└── examples/                                     
+    ├── Chewie_CO_2016/
+    │   ├── AE_model/train.py                     # Stage1 source training
+    │   ├── Stage2_MMD/with_align_all_labels.py   # Cross-session target alignment
+    │   └── to_Mihili_CO_2014/
+    │       └── Stage2_MMD/with_align_all_labels.py # Cross-subject target alignment
+    └── behavioral_decoder/
+        ├── ridge_decoder.py                      # Ridge decoder on Stage2 latents
+        └── lstm_decoder.py                       # LSTM decoder on Stage2 latents
+```
+
+## Dependencies
+
+To get start, we recommend creating a conda environment first.
+
+```bash
+git clone git@github.com:FAMD-CASIA/TCLA.git
+cd TCLA
+conda create --name TCLA python=3.9
+conda activate TCLA
+pip install -r requirements.txt
+```
+
+## Data Format
+Save your data as .pickle format and should contain three keys:
+
+```python
+{
+    "spike": spike_array,
+    "behavior": behavior_array,
+    "label": label_array,
+}
+```
+
+Expected array shapes:
+
+- `spike`: `num_trials x num_time_bins x num_neurons`
+- `behavior`: `num_trials x num_time_bins x 2`
+- `label`: `num_trials`
 
 ## Quick Check
 
