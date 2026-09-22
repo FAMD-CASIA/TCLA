@@ -59,12 +59,20 @@ pip install -r requirements.txt
 ```
 
 ## Downloading Monkey Data
-
-`data/` stores example data for quick validation. The complete datasets used in the paper can be obtained from the following URLs:
+The following publicly available motor datasets can be obtained from
+their original repositories:
 
 *Chewie CO 2016*, *Mihili CO 2014*, *Jango ISO 2015*, and *Spike ISO 2012* are available from https://datadryad.org/dataset/doi:10.5061/dryad.cvdncjt7n. 
 
 *L parallel CO* and *V parallel CO* are available from https://datadryad.org/dataset/doi:10.5061/dryad.jsxksn0qd. 
+
+`data/` stores example data for quick validation. 
+The repository provides a small example dataset in `data/example_data.zip`.
+Extract it before running the examples:
+
+```bash
+python -m zipfile -e data/example_data.zip data/
+```
 
 ## Data Format
 Save your data as .pickle format and should contain three keys:
