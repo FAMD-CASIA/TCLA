@@ -1,7 +1,9 @@
 # Stable Neural Decoding Across Sessions via Task-Conditioned Latent Alignment for Brain-Machine Interfaces
 ![architecture](assets/TCLA_architecture.svg)
 
-This repository contains code for TCLA. It keeps Chewie and Mihili example datasets and the code needed to train the source autoencoder and run conditional target alignment.
+## Overview
+This repository contains code for Task-Conditioned Latent Alignment (TCLA). TCLA is a framework for stable neural decoding across recording sessions and subjects. The full manuscript evaluates TCLA on seven nonhuman-primate datasets. This repository
+provides runnable examples for cross-session and cross-subject adaptation using *Chewie CO 2016* and *Mihili CO 2014*.
 
 ## Contents
 
