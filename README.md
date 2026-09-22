@@ -59,8 +59,7 @@ pip install -r requirements.txt
 ```
 
 ## Downloading Monkey Data
-The following publicly available motor datasets can be obtained from
-their original repositories:
+The following publicly available motor datasets can be obtained:
 
 *Chewie CO 2016*, *Mihili CO 2014*, *Jango ISO 2015*, and *Spike ISO 2012* are available from https://datadryad.org/dataset/doi:10.5061/dryad.cvdncjt7n. 
 
