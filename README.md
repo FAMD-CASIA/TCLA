@@ -111,4 +111,18 @@ Stage 2 Cross-subject target alignment, after Stage1 has produced the source che
 python examples/Chewie_CO_2016/to_Mihili_CO_2014/Stage2_MMD/with_align_all_labels.py
 ```
 
+Ridge and LSTM behavioral decoder, separately, after Stage 2 cross-session alignment:
+
+```bash
+python examples/behavioral_decoder/ridge_decoder.py
+python examples/behavioral_decoder/lstm_decoder.py
+```
+
+For the Chewie-to-Mihili cross-subject decoding, use:
+
+```bash
+python examples/behavioral_decoder/ridge_decoder.py \
+    --stage2-example chewie_to_mihili
+```
+
 Outputs are written under `outputs/`.
