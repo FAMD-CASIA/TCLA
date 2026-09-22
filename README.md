@@ -3,7 +3,7 @@
 
 ## Overview
 This repository contains code for Task-Conditioned Latent Alignment (TCLA). TCLA is a framework for stable neural decoding across recording sessions and subjects. The full manuscript evaluates TCLA on seven nonhuman-primate datasets. This repository
-provides runnable examples for cross-session and cross-subject adaptation using *Chewie CO 2016* and *Mihili CO 2014*.
+provides examples for cross-session and cross-subject adaptation using *Chewie CO 2016* and *Mihili CO 2014*.
 
 ## Contents
 
