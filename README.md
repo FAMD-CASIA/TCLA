@@ -1,6 +1,6 @@
 # TCLA
 
-This repository contains code for TCLA. It keeps Chewie and Mihili example datasets and the code needed to train a smooth source autoencoder and run conditional target alignment.
+This repository contains code for TCLA. It keeps Chewie and Mihili example datasets and the code needed to train the source autoencoder and run conditional target alignment.
 
 ![architecture](assets/TCLA_architecture.svg)
 
