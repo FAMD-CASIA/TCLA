@@ -224,7 +224,7 @@ def main():
     parser.add_argument("--stage2-npz", type=Path, default=None)
     parser.add_argument("--stage2-example", choices=["chewie", "chewie_to_mihili"], default="chewie")
     parser.add_argument("--source-session", default="session_0")
-    parser.add_argument("--target-session", default="session_0")
+    parser.add_argument("--target-session", default="session_1")
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_ROOT)
     parser.add_argument("--test-size", type=float, default=0.2)
     parser.add_argument("--random-seed", type=int, default=lstm_config.random_seed)

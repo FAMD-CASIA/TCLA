@@ -115,7 +115,12 @@ Ridge and LSTM behavioral decoder, separately, after Stage 2 cross-session align
 
 ```bash
 python examples/behavioral_decoder/ridge_decoder.py
-python examples/behavioral_decoder/lstm_decoder.py
+    --source-session session_0 \
+    --target-session session_1
+
+python examples/behavioral_decoder/lstm_decoder.
+    --source-session session_0 \
+    --target-session session_1
 ```
 
 For the Chewie-to-Mihili cross-subject decoding, use:
