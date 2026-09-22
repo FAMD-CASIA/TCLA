@@ -48,7 +48,7 @@ TCLA/
 
 ## Dependencies
 
-To get start, we recommend creating a conda environment first.
+To get started, we recommend creating a conda environment first.
 
 ```bash
 git clone git@github.com:FAMD-CASIA/TCLA.git
@@ -62,9 +62,9 @@ pip install -r requirements.txt
 
 `data/` stores example data for quick validation. The complete datasets used in the paper can be obtained from the following URLs:
 
-Chewie\_CO\_2016, Mihili\_CO\_2014, Jango\_ISO\_2015, and Spike\_ISO\_2012 are available from https://datadryad.org/dataset/doi:10.5061/dryad.cvdncjt7n. 
+*Chewie CO 2016*, *Mihili CO 2014*, *Jango ISO 2015*, and *Spike ISO 2012* are available from https://datadryad.org/dataset/doi:10.5061/dryad.cvdncjt7n. 
 
-L\_paralle\_CO and V\_paralle\_CO were are available from https://datadryad.org/dataset/doi:10.5061/dryad.jsxksn0qd. 
+*L parallel CO* and *V parallel CO* are available from https://datadryad.org/dataset/doi:10.5061/dryad.jsxksn0qd. 
 
 ## Data Format
 Save your data as .pickle format and should contain three keys:
@@ -86,19 +86,19 @@ Expected array shapes:
 
 ## Running the experiments
 
-Stage1 source training:
+Stage 1 source training:
 
 ```bash
 python examples/Chewie_CO_2016/AE_model/train.py
 ```
 
-Cross-session Stage2 target alignment, after Stage1 has produced the source checkpoint:
+Stage 2 Cross-session target alignment, after Stage1 has produced the source checkpoint:
 
 ```bash
 python examples/Chewie_CO_2016/Stage2_MMD/with_align_all_labels.py
 ```
 
-Cross-subject Stage2 target alignment, after Stage1 has produced the source checkpoint:
+Stage 2 Cross-subject target alignment, after Stage1 has produced the source checkpoint:
 
 ```bash
 python examples/Chewie_CO_2016/to_Mihili_CO_2014/Stage2_MMD/with_align_all_labels.py
