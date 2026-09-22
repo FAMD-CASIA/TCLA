@@ -128,6 +128,7 @@ For the Chewie-to-Mihili cross-subject decoding, use:
 ```bash
 python examples/behavioral_decoder/ridge_decoder.py \
     --stage2-example chewie_to_mihili
+    
 python examples/behavioral_decoder/lstm_decoder.py \
     --stage2-example chewie_to_mihili  
 ```
