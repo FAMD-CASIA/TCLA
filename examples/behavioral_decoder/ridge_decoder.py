@@ -118,7 +118,7 @@ def main():
     parser.add_argument("--stage2-npz", type=Path, default=None)
     parser.add_argument("--stage2-example", choices=["chewie", "chewie_to_mihili"], default="chewie")
     parser.add_argument("--source-session", default="session_0")
-    parser.add_argument("--target-session", default="session_1")
+    parser.add_argument("--target-session", default="session_0")
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_ROOT)
     parser.add_argument("--lag", type=int, default=ridge_config.lag)
     parser.add_argument("--test-size", type=float, default=0.2)
