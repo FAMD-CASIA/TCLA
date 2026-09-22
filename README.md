@@ -6,11 +6,9 @@ This repository contains code for Task-Conditioned Latent Alignment (TCLA). TCLA
 provides examples for cross-session and cross-subject adaptation using *Chewie CO 2016* and *Mihili CO 2014*.
 
 TCLA was initially introduced in our preliminary study:
-
-**Cross-Session Decoding of Neural Spiking Data via Task-Conditioned Latent Alignment** 
-
+[Cross-Session Decoding of Neural Spiking Data via Task-Conditioned Latent Alignment](https://arxiv.org/abs/2601.19963)
 by Canyang Zhao, Bolin Peng, J. Patrick Mayo, Ce Ju, and Bing Liu. (2026).  
-[arXiv:2601.19963](https://arxiv.org/abs/2601.19963)
+
 
 ## Contents
 
