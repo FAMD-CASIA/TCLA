@@ -415,6 +415,16 @@ def run_target_adaptation_conditional_mmd(cfg, target_session_id, source_session
         cfg.adapt.num_workers,
         shuffle=True,
     )
+    source_train_eval_loader = make_loader(
+        spikes_src,
+        behavior_src,
+        labels_src,
+        source_train_idx,
+        source_session_id,
+        cfg.adapt.batch_size,
+        cfg.adapt.num_workers,
+        shuffle=False,
+    )
     source_val_loader = make_loader(
         spikes_src,
         behavior_src,
@@ -651,6 +661,29 @@ def run_target_adaptation_conditional_mmd(cfg, target_session_id, source_session
         **r2_result,
     )
     print(f"Saved target test predictions to: {npz_path}")
+
+    source_npz_path = os.path.join(cfg.exp.eval_dir, "source_train_behavior_prediction_conditional_mmd.npz")
+    source_r2_result, source_y_true_trials, source_y_pred_trials, source_z_latent_trials = evaluate_behavior_r2(
+        source_reference_ae,
+        behavior_head,
+        source_train_eval_loader,
+        source_session_id,
+        device,
+    )
+    np.savez(
+        source_npz_path,
+        y_true=source_y_true_trials,
+        y_pred=source_y_pred_trials,
+        z_latent=source_z_latent_trials,
+        source_train_indices=source_train_idx,
+        source_session_id=source_session_id,
+        behavior_normalized=True,
+        source_behavior_mean=source_behavior_mean,
+        source_behavior_var=source_behavior_var,
+        source_behavior_std=source_behavior_std,
+        **source_r2_result,
+    )
+    print(f"Saved source train predictions for decoder training to: {source_npz_path}")
 
     r2_csv_path = os.path.join(cfg.exp.eval_dir, "target_test_r2_conditional_mmd.csv")
     with open(r2_csv_path, "w", newline="") as f:
