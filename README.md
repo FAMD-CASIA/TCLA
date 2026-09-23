@@ -116,21 +116,25 @@ Ridge and LSTM behavioral decoder, separately, after Stage 2 cross-session align
 ```bash
 python examples/behavioral_decoder/ridge_decoder.py \
     --source-session session_0 \
-    --target-session session_1
+    --target-session session_1 \
+    --output-dir outputs/behavioral_decoder/ridge/session_0_to_session_1
 
 python examples/behavioral_decoder/lstm_decoder.py \
     --source-session session_0 \
-    --target-session session_1
+    --target-session session_1 \
+    --output-dir outputs/behavioral_decoder/lstm/session_0_to_session_1
 ```
 
 For the Chewie-to-Mihili cross-subject decoding, use:
 
 ```bash
 python examples/behavioral_decoder/ridge_decoder.py \
-    --stage2-example chewie_to_mihili
+    --stage2-example chewie_to_mihili \
+    --output-dir outputs/behavioral_decoder/ridge/chewie_to_mihili_session_0_to_session_0
 
 python examples/behavioral_decoder/lstm_decoder.py \
-    --stage2-example chewie_to_mihili
+    --stage2-example chewie_to_mihili \
+    --output-dir outputs/behavioral_decoder/lstm/chewie_to_mihili_session_0_to_session_0
 ```
 
 Outputs are written under `outputs/`.
