@@ -53,11 +53,6 @@ def default_source_train_npz(args):
 
 
 def load_npz_latents(path, role):
-    if not path.exists():
-        raise FileNotFoundError(
-            f"Missing {role} latent file: {path}. "
-            "Rerun the Stage2 script to generate decoder-ready latent files."
-        )
     data = np.load(path)
     return data["z_latent"].astype(np.float32), data["y_true"].astype(np.float32)
 
