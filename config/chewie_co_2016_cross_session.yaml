@@ -45,6 +45,7 @@ stage2_conditional_mmd:
     num_blocks_decoder: 0
     num_lin_per_mlp: 2
     bidirectional: false
+    latent_smooth_sigma_bins: 10
     use_pnba_read_adapter: true
     pnba_proj_channels: 32
     pnba_pooled_neurons: 16
