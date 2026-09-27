@@ -92,21 +92,13 @@ def generate_lagged_matrix(input_matrix, lag):
 
 
 def build_lagged_decoder_matrices(latents, behavior, lag):
-    x_all = []
-    y_all = []
-    for trial_idx in range(latents.shape[0]):
-        x_trial = latents[trial_idx].T
-        y_trial = behavior[trial_idx].T
-        x_all.append(generate_lagged_matrix(x_trial, lag))
-        y_all.append(y_trial[lag:, :])
-    return np.concatenate(x_all, axis=0), np.concatenate(y_all, axis=0)
+    x = flatten_time_major(latents)
+    y = flatten_time_major(behavior)
+    return generate_lagged_matrix(x, lag), y[lag:, :]
 
 
 def predict_lagged(model, latents, lag):
-    x_all = []
-    for trial_idx in range(latents.shape[0]):
-        x_all.append(generate_lagged_matrix(latents[trial_idx].T, lag))
-    return model.predict(np.concatenate(x_all, axis=0))
+    return model.predict(generate_lagged_matrix(flatten_time_major(latents), lag))
 
 
 def raw_and_mean_r2(y_true, y_pred):

@@ -190,22 +190,17 @@ def get_spikes_with_history(neural_data, bins_before, bins_after=0, bins_current
 
 
 def build_history_decoder_matrices(latents, behavior, bins_before, bins_after, bins_current):
-    x_all = []
-    y_all = []
-    for trial_idx in range(latents.shape[0]):
-        trial_latents = torch.from_numpy(latents[trial_idx].T).float()
-        trial_behavior = torch.from_numpy(behavior[trial_idx].T).float()
-        x = get_spikes_with_history(
-            trial_latents,
-            bins_before=bins_before,
-            bins_after=bins_after,
-            bins_current=bins_current,
-        )
-        end = x.size(0) - bins_after if bins_after > 0 else x.size(0)
-        valid = slice(bins_before, end)
-        x_all.append(x[valid].contiguous())
-        y_all.append(trial_behavior[valid].contiguous())
-    return torch.cat(x_all, dim=0), torch.cat(y_all, dim=0)
+    flat_latents = flatten_time_major(latents).float()
+    flat_behavior = flatten_time_major(behavior).float()
+    x = get_spikes_with_history(
+        flat_latents,
+        bins_before=bins_before,
+        bins_after=bins_after,
+        bins_current=bins_current,
+    )
+    end = x.size(0) - bins_after if bins_after > 0 else x.size(0)
+    valid = slice(bins_before, end)
+    return x[valid].contiguous(), flat_behavior[valid].contiguous()
 
 
 def normalize_decoder_inputs(x_train, x_test):
